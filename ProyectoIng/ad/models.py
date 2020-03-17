@@ -53,11 +53,11 @@ class Ad(models.Model):
     id_ad_kind= models.ForeignKey(AdKind, on_delete= models.CASCADE)
     id_category= models.ForeignKey(Category, on_delete= models.CASCADE)
     id_unit= models.ForeignKey(Unit, on_delete= models.CASCADE, default = None, blank=True, null=True)
-    ad_name= models.CharField(max_length=100)
-    ad_description= models.TextField()
-    price= models.FloatField()
+    ad_name= models.CharField(max_length=100, verbose_name = "Titulo")
+    ad_description= models.TextField(verbose_name = "Descripcion del anuncio")
+    price= models.FloatField(verbose_name = "precio")
     date_created = models.DateTimeField(auto_now_add=True)
-    ad_images= models.ManyToManyField(Image, related_name="get_images_ad")
+    ad_images= models.ManyToManyField(Image, related_name="get_images_ad", verbose_name = "Imagen")
 
     def __str__(self):
         return self.ad_name
