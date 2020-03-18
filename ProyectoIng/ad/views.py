@@ -22,18 +22,5 @@ class ShowAdsListView(ListView):
 
 class AdCreate(CreateView):
     model = Ad
-    fields = ['ad_name', 'ad_description', 'price', 'ad_images']
+    form_class = AdForm
 
-    def post(self, request, *args, **kwargs):
-        form = AdForm(request.POST)
-        if form.is_valid():
-            ad = form.save()
-            ad.save()
-            user_ad.user = request.user
-            user_ad.ad = store
-            user_ad.save()
-            return HttpResponseRedirect(reverse_lazy('my_products')+'?added')
-        return HttpResponseRedirect(reverse_lazy('my_products')+'?error')
-    
-    def get_success_url(self):
-        return reverse_lazy('my_products')+'?added'
