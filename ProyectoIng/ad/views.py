@@ -24,3 +24,14 @@ class AdCreate(CreateView):
     model = Ad
     form_class = AdForm
 
+    def post(self, request, *args, **kwargs):
+        form = AdForm(request.POST)
+        if form.is_valid():
+            ad = form.save()
+            ad.save()
+            return HttpResponseRedirect(reverse_lazy('my_products')+'?added')
+        return HttpResponseRedirect(reverse_lazy('my_products')+'?error')
+        
+    def get_success_url(self):
+        return reverse_lazy('my_products')+'?added'
+
