@@ -92,7 +92,12 @@
                                     <h4><strong>En Pa'Ya desde: </strong> {{ object.date_joined | date:'d-m-Y' }} </h4>
                                 </div>
                             </div>
+<<<<<<< Updated upstream
                             <div class="row mb-2">
+=======
+                            <div class="col-md-6">
+                                <div class="form-group my-0 py-1">
+>>>>>>> Stashed changes
                                 <p class="my-0 py-0">
                                     <strong>Comparte este perfil: </strong>
                                     <span id="profile_url">{{ request.scheme  }}://{#{ request.META['HTTP_HOST'] }#}{% url 'profile' object.pk %}</span>

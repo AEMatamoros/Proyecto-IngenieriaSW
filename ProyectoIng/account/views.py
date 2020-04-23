@@ -53,6 +53,7 @@ class CreateUser(CreateView): #Pass,Correo,Nombre,Apellido,Telefono,Direccion,Fe
     
 def update_user(request):
     #Solo solicitudes por metodo POST
+    print(request.user)
     if request.method == "POST":
         form = UpdateUserForm(request.POST, request.FILES or None, instance=request.user)
         if form.is_valid():

@@ -22,7 +22,15 @@ class Store(models.Model):
         verbose_name_plural= "Tiendas"
 
     def user_is_owner(self, user):
+<<<<<<< Updated upstream
         users = UsersXStore.objects.values('user').get(store = self)
+=======
+        if user is None:
+            return False
+        #La siguiente linea obtiene los correos de todos los usuarios owners de esa tienda en especifico, los guarda en un diccionario
+        users = UsersXStore.objects.values('user').get(store = self) #El equivalente SQL de: de SELECT user FROM UsersXStore WHERE store = self 
+        #Recorre los valores de los id de los usuarios de la consulta anterior y si el usuario recibido se encuentra como owner devuelve true.
+>>>>>>> Stashed changes
         for u in users.values():
             if user.id == u:
                 return True
